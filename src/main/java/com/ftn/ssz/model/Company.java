@@ -1,18 +1,24 @@
 package com.ftn.ssz.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Company {
-    private String name;
+    @Id
     private String PIB;
+    private String name;
     private String PIO;
     private String registrationNumber;
     private Date registrationDate;
-    private List<JobApplication> jobApplications;
+    @OneToMany(mappedBy = "company")
+    private List<JobAlert> jobAlerts;
 }
