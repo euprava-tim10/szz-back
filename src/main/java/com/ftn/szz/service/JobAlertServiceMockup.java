@@ -27,8 +27,11 @@ public class JobAlertServiceMockup {
         Company company2 = new Company("234562345432", "Company name 2", "23423144523", "12341234234", new Date("2023/02/24"), new ArrayList<>());
         JobAlert jobAlert = new JobAlert(1L, new Date("2023/04/21"), new Date("2023/06/21"), EEducation.SECONDARY_SCHOOL_DEGREE, EProfession.MEDICINE, company, new ArrayList<>());
         JobAlert jobAlert2 = new JobAlert(2L, new Date("2023/04/15"), new Date("2023/06/1"), EEducation.NO_EDUCATION_REQUIRED, EProfession.ELECTRICAL_ENGINEERING_AND_TELECOMMUNICATIONS, company2, new ArrayList<>());
+        JobAlert jobAlert3 = new JobAlert(3L, new Date("2023/04/15"), new Date("2023/06/1"), EEducation.FACULTY_DEGREE, EProfession.ELECTRICAL_ENGINEERING_AND_TELECOMMUNICATIONS, company2, new ArrayList<>());
+
         jobAlerts.add(jobAlert);
         jobAlerts.add(jobAlert2);
+        jobAlerts.add(jobAlert3);
         return jobAlerts;
     }
 
@@ -54,7 +57,7 @@ public class JobAlertServiceMockup {
                 return userService.getSecondarySchoolEducation().getSchoolType().equals("SREDNJA");
             case FACULTY_DEGREE:
                 for (FacultyDiploma facultyDiploma : userService.getCollegeEducation()) {
-                    if (facultyDiploma.getLevel().equals(jobAlert.getNeededEducation().toString())) {
+                    if (facultyDiploma.getLevel().contains("OSNOVNE, MASTER, DOKTORSKE")) {
                         return true;
                     }
                 }

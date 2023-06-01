@@ -27,7 +27,6 @@ public class JobAlertController {
     }
 
     @GetMapping("/jobAlerts/{id}")
-    @IsLoggedIn
     public ResponseEntity<Boolean> sendJobApplication(@PathVariable long id) {
         boolean canApplicate = this.jobAlertService.canApplicate(id);
         if(canApplicate){
