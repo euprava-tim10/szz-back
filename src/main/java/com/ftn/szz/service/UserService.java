@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.ftn.szz.security.AuthHelper.authUser;
@@ -34,10 +35,10 @@ public class UserService {
     public List<FacultyDiploma> getCollegeEducation() {
         String collegeSchoolUrl = facultyUrl + "/api/public/studenti/" + authUser().getUsername() + "/diplome";
         RestTemplate restTemplate = new RestTemplate();
-        FacultyDiplomaList facultyDiplomaList = restTemplate.getForObject(collegeSchoolUrl, FacultyDiplomaList.class);
-        if (facultyDiplomaList != null) {
-            return facultyDiplomaList.getFacultyDiplomaList();
-        }
+        FacultyDiploma[] facultyDiplomaArray = restTemplate.getForObject(collegeSchoolUrl, FacultyDiploma[].class);
+        if (facultyDiplomaArray != null) {
+            return Arrays.asList(facultyDiplomaArray);
+            }
         return null;
-    }
+    } 
 }
