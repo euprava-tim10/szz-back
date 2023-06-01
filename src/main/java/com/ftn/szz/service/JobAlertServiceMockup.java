@@ -5,7 +5,9 @@ import com.ftn.szz.model.FacultyDiploma;
 import com.ftn.szz.model.JobAlert;
 import com.ftn.szz.model.SchoolDiploma;
 import com.ftn.szz.model.enums.EEducation;
+import com.ftn.szz.model.enums.EFacultyLevel;
 import com.ftn.szz.model.enums.EProfession;
+import com.ftn.szz.model.enums.ESchoolLevel;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -52,12 +54,13 @@ public class JobAlertServiceMockup {
             case NO_EDUCATION_REQUIRED:
                 return true;
             case PRIMARY_SCHOOL_DEGREE:
-                return userService.getPrimarySchoolEducation().getSchoolType().equals("OSNOVNA");
+                return userService.getPrimarySchoolEducation().getSchoolType().equals(ESchoolLevel.OSNOVNA.toString());
             case SECONDARY_SCHOOL_DEGREE:
-                return userService.getSecondarySchoolEducation().getSchoolType().equals("SREDNJA");
+                return userService.getSecondarySchoolEducation().getSchoolType().equals(ESchoolLevel.SREDNJA.toString());
             case FACULTY_DEGREE:
                 for (FacultyDiploma facultyDiploma : userService.getCollegeEducation()) {
-                    if (facultyDiploma.getLevel().contains("OSNOVNE, MASTER, DOKTORSKE")) {
+                    String diplomaLevel = facultyDiploma.getLevel();
+                    if (diplomaLevel.contains(EFacultyLevel.MASTER.toString()) || diplomaLevel.contains(EFacultyLevel.OSNOVNE.toString()) || diplomaLevel.contains(EFacultyLevel.DOKTORSKE.toString())) {
                         return true;
                     }
                 }
