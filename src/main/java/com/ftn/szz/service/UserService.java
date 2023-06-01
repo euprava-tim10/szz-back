@@ -32,7 +32,7 @@ public class UserService {
     }
 
     public List<FacultyDiploma> getCollegeEducation() {
-        String collegeSchoolUrl = facultyUrl + "/api/public/studenti" + authUser().getUsername() + "/diplome";
+        String collegeSchoolUrl = facultyUrl + "/api/public/studenti/" + authUser().getUsername() + "/diplome";
         RestTemplate restTemplate = new RestTemplate();
         FacultyDiplomaList facultyDiplomaList = restTemplate.getForObject(collegeSchoolUrl, FacultyDiplomaList.class);
         if (facultyDiplomaList != null) {
