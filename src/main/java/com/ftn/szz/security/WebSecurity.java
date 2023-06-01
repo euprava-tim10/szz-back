@@ -7,7 +7,7 @@ import static com.ftn.szz.security.AuthHelper.authUser;
 @Component
 public class WebSecurity {
 
-    public boolean checkSchoolAdmin(long id) {
-        return authUser().getSchoolId() == id;
-    }
+//    public boolean checkSchoolAdmin(long id) {
+//        return authUser().getSchoolId() == id;
+//    }
 }

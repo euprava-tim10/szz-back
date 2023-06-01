@@ -26,9 +26,16 @@ public class JobAlertController {
         return new ResponseEntity<>(jobAlerts, HttpStatus.OK);
     }
 
-    @PostMapping("/jobAlerts/{id}")
+    @GetMapping("/jobAlerts/{id}")
     @IsLoggedIn
-    public ResponseEntity<Boolean> sendJobApplication(@PathVariable long jobAlertId) {
-        return new ResponseEntity<>(true, HttpStatus.OK);
+    public ResponseEntity<Boolean> sendJobApplication(@PathVariable long id) {
+        boolean canApplicate = this.jobAlertService.canApplicate(id);
+        if(canApplicate){
+//            SEND REQUEST TO API
+            System.out.println("Can applicate");
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        }
+        System.out.println("Can't applicate");
+        return new ResponseEntity<>(false,HttpStatus.OK);
     }
 }

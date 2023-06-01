@@ -49,10 +49,9 @@ public class JobAlertServiceMockup {
             case NO_EDUCATION_REQUIRED:
                 return true;
             case PRIMARY_SCHOOL_DEGREE:
-//                TODO update .getCourse()
-                return jobAlert.getNeededEducation().toString().equals(userService.getPrimarySchoolEducation().getCourse());
+                return userService.getPrimarySchoolEducation().getSchoolType().equals("OSNOVNA");
             case SECONDARY_SCHOOL_DEGREE:
-                return jobAlert.getNeededEducation().toString().equals(userService.getSecondarySchoolEducation().getCourse());
+                return userService.getSecondarySchoolEducation().getSchoolType().equals("SREDNJA");
             case FACULTY_DEGREE:
                 for (FacultyDiploma facultyDiploma : userService.getCollegeEducation()) {
                     if (facultyDiploma.getLevel().equals(jobAlert.getNeededEducation().toString())) {
