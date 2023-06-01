@@ -40,5 +40,5 @@ public class UserService {
             return Arrays.asList(facultyDiplomaArray);
             }
         return null;
-    } 
+    }
 }
