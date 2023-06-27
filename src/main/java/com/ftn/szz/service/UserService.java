@@ -1,12 +1,12 @@
 package com.ftn.szz.service;
 
 import com.ftn.szz.model.FacultyDiploma;
-import com.ftn.szz.model.FacultyDiplomaList;
 import com.ftn.szz.model.SchoolDiploma;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.constraints.Null;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class UserService {
         FacultyDiploma[] facultyDiplomaArray = restTemplate.getForObject(collegeSchoolUrl, FacultyDiploma[].class);
         if (facultyDiplomaArray != null) {
             return Arrays.asList(facultyDiplomaArray);
-            }
+        }
         return null;
     }
 }

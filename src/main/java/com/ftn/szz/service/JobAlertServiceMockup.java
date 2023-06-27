@@ -3,7 +3,6 @@ package com.ftn.szz.service;
 import com.ftn.szz.model.Company;
 import com.ftn.szz.model.FacultyDiploma;
 import com.ftn.szz.model.JobAlert;
-import com.ftn.szz.model.SchoolDiploma;
 import com.ftn.szz.model.enums.EEducation;
 import com.ftn.szz.model.enums.EFacultyLevel;
 import com.ftn.szz.model.enums.EProfession;
@@ -30,10 +29,12 @@ public class JobAlertServiceMockup {
         JobAlert jobAlert = new JobAlert(1L, new Date("2023/04/21"), new Date("2023/06/21"), EEducation.SECONDARY_SCHOOL_DEGREE, EProfession.MEDICINE, company, new ArrayList<>());
         JobAlert jobAlert2 = new JobAlert(2L, new Date("2023/04/15"), new Date("2023/06/1"), EEducation.NO_EDUCATION_REQUIRED, EProfession.ELECTRICAL_ENGINEERING_AND_TELECOMMUNICATIONS, company2, new ArrayList<>());
         JobAlert jobAlert3 = new JobAlert(3L, new Date("2023/04/15"), new Date("2023/06/1"), EEducation.FACULTY_DEGREE, EProfession.ELECTRICAL_ENGINEERING_AND_TELECOMMUNICATIONS, company2, new ArrayList<>());
+        JobAlert jobAlert4 = new JobAlert(4L, new Date("2023/04/15"), new Date("2023/06/1"), EEducation.PRIMARY_SCHOOL_DEGREE, EProfession.ELECTRICAL_ENGINEERING_AND_TELECOMMUNICATIONS, company2, new ArrayList<>());
 
         jobAlerts.add(jobAlert);
         jobAlerts.add(jobAlert2);
         jobAlerts.add(jobAlert3);
+        jobAlerts.add(jobAlert4);
         return jobAlerts;
     }
 
@@ -47,7 +48,7 @@ public class JobAlertServiceMockup {
         return null;
     }
 
-    public boolean canApplicate(long jobAlertId) {
+    public Boolean canApplicate(long jobAlertId) {
         JobAlert jobAlert = findOne(jobAlertId);
 
         switch (jobAlert.getNeededEducation()) {

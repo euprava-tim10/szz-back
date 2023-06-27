@@ -8,7 +8,7 @@ import java.util.Map;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@ToString
 public class SchoolDiploma {
     private String firstName;
     private String lastName;
