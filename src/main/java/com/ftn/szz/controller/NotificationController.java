@@ -23,9 +23,9 @@ public class NotificationController {
         this.notificationService = notificationService;
     }
 
-    @GetMapping("/{id}/notifications")
-    public ResponseEntity<List<Notification>> getNotifications(@PathVariable String id) {
-        return new ResponseEntity<>(notificationService.getNotifications(id), HttpStatus.OK);
+    @GetMapping("/notifications")
+    public ResponseEntity<List<Notification>> getNotifications() {
+        return new ResponseEntity<>(notificationService.getNotifications(), HttpStatus.OK);
     }
 
 }
