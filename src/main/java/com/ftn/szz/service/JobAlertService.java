@@ -50,7 +50,7 @@ public class JobAlertService {
         return restTemplate.getForObject(aprJobAlert, JobAlert.class);
     }
 
-    public Boolean canApplicate(long jobAlertId) {
+    public Boolean canApplicate(Long jobAlertId) {
         JobAlert jobAlert = getJobAlert(jobAlertId);
 
         switch (jobAlert.getNeededEducation()) {

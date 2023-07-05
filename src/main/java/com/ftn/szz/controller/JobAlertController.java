@@ -32,7 +32,7 @@ public class JobAlertController {
     }
 
     @GetMapping("/jobAlerts/{id}")
-    public ResponseEntity<Boolean> sendJobApplication(@PathVariable long id) {
+    public ResponseEntity<Boolean> sendJobApplication(@PathVariable Long id) {
         Boolean canApplicate = jobAlertService.canApplicate(id);
 
         if (canApplicate){
